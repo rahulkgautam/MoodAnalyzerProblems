@@ -25,20 +25,29 @@ namespace MoodTestProject
         }
 
         [TestMethod]
-        public void TestUnknownMood()
-        {
-            MoodAnalyser moodAnalyser = new MoodAnalyser();
-            string message = "This is just a regular message.";
-            string mood = moodAnalyser.AnalyseMood(message);
-            Assert.AreEqual("Unknown", mood);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(MoodAnalysisException))]
         public void TestNullMessage()
         {
             MoodAnalyser moodAnalyser = new MoodAnalyser();
             string message = null;
+            string mood = moodAnalyser.AnalyseMood(message);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(MoodAnalysisException))]
+        public void TestEmptyMessage()
+        {
+            MoodAnalyser moodAnalyser = new MoodAnalyser();
+            string message = string.Empty;
+            string mood = moodAnalyser.AnalyseMood(message);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(MoodAnalysisException))]
+        public void TestInvalidMood()
+        {
+            MoodAnalyser moodAnalyser = new MoodAnalyser();
+            string message = "Invalid mood message";
             string mood = moodAnalyser.AnalyseMood(message);
         }
     }

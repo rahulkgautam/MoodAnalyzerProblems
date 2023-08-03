@@ -10,7 +10,7 @@ namespace MoodTestProject
         {
             if (string.IsNullOrWhiteSpace(message))
             {
-                throw new ArgumentException("Message cannot be null or empty.");
+                throw new MoodAnalysisException(MoodAnalysisError.NullMessage, "Message cannot be null or empty.");
             }
             if (message.Contains("happy", StringComparison.OrdinalIgnoreCase))
             {
@@ -22,7 +22,7 @@ namespace MoodTestProject
             }
             else
             {
-                return "Unknown";
+                throw new MoodAnalysisException(MoodAnalysisError.InvalidMood, "Invalid mood provided.");
             }
         }
     }
