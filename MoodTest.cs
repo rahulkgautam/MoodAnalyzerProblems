@@ -7,9 +7,10 @@ namespace MoodTestProject
     public class MoodTest
     {
         [TestMethod]
-        public void TestCreateMoodAnalyser()
+        public void TestCreateMoodAnalyserWithMessage()
         {
-            MoodAnalyser moodAnalyser = MoodAnalyserFactory.CreateMoodAnalyser();
+            string message = "I am feeling Happy today!";
+            MoodAnalyser moodAnalyser = MoodAnalyserFactory.CreateMoodAnalyser(message);
             Assert.IsNotNull(moodAnalyser);
         }
     }

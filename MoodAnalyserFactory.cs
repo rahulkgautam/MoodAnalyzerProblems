@@ -7,11 +7,11 @@ namespace MoodTestProject
 {
     class MoodAnalyserFactory
     {
-        public static MoodAnalyser CreateMoodAnalyser()
+        public static MoodAnalyser CreateMoodAnalyser(string message)
         {
             Type moodAnalyserType = typeof(MoodAnalyser);
-            ConstructorInfo constructor = moodAnalyserType.GetConstructor(Type.EmptyTypes);
-            MoodAnalyser moodAnalyser = (MoodAnalyser)constructor.Invoke(null);
+            ConstructorInfo constructor = moodAnalyserType.GetConstructor(new Type[] { typeof(string) });
+            MoodAnalyser moodAnalyser = (MoodAnalyser)constructor.Invoke(new object[] { message });
             return moodAnalyser;
         }
     }
